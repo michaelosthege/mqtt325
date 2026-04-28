@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=62.6"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mqtt325"
+version = "0.1.0"
+description = "Republishes MQTT v3 messages as retained MQTT v5 messages."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    {name = "Michael Osthege", email = "michael.osthege@outlook.com"},
+]
+classifiers = [
+    "Programming Language :: Python",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+
+dependencies = [
+    "paho-mqtt>=2.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2.post1",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.0.0",
+    "twine>=6.1.0",
+]
+
+[project.scripts]
+mqtt325 = "mqtt325.main:run"
