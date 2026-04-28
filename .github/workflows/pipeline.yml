@@ -1,0 +1,28 @@
+name: pipeline
+
+on: [push]
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.14"]
+    steps:
+    - uses: actions/checkout@v6
+    - name: Install uv and set the Python version
+      uses: astral-sh/setup-uv@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install the project
+      run: uv sync --all-extras --dev
+    - name: Test with pytest
+      run: |
+        uv run pytest --cov=mqtt325 --cov-report term-missing tests
+    - name: Test Wheel install and import
+      run: |
+        uv run python -m build
+        uv run twine check dist/*
+        cd dist
+        pip install mqtt325*.whl
+        python -c "import mqtt325; print(mqtt325.__version__)"

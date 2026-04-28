@@ -1,3 +1,6 @@
+[![PyPI version](https://img.shields.io/pypi/v/mqtt325)](https://pypi.org/project/mqtt325)
+[![pipeline](https://github.com/michaelosthege/mqtt325/workflows/pipeline/badge.svg)](https://github.com/michaelosthege/mqtt325/actions)
+
 # MQTT 3 → 5
 
 This small Python app provides MQTT message re-routing to create retained messages from devices
