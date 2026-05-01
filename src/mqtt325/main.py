@@ -108,7 +108,7 @@ class Mqtt325App:
         return
 
     async def run_async(self):
-        logger.info("Connecting MQTT")
+        logger.info("Connecting MQTT to %s:%s", MQTT_HOST, MQTT_PORT)
         client = mqtt.Client(
             client_id="mqtt-325",
             callback_api_version=mqtt.CallbackAPIVersion.VERSION2,
